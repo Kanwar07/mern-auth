@@ -1,0 +1,28 @@
+.main {
+  display: flex;
+  justify-content: space-around;
+  padding: 1.2rem 2rem;
+  background-image: linear-gradient(
+    to right,
+    #ffffff,
+    #f5f9ff,
+    #e0f7ff,
+    #c4f6ff,
+    #a7f5ff,
+    #93f2ff,
+    #7deeff,
+    #63ebff,
+    #52e4ff,
+    #3fddff,
+    #29d6ff,
+    #00cfff
+  );
+}
+
+.button {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  display: flex;
+  color: black;
+}
