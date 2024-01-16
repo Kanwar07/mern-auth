@@ -1,5 +1,4 @@
 import { asyncHandler } from "../utils/asyncHandler.js";
-import { ApiError } from "../utils/APIError.js";
 import { ApiResponse } from "../utils/APIResponse.js";
 import { User } from "../models/user.model.js";
 import jwt from "jsonwebtoken";
@@ -13,7 +12,10 @@ const generateToken = async (userId) => {
 
     return token;
   } catch (error) {
-    throw new ApiError(500, "Something went wrong while genrating Access");
+    return res.json({
+      statusCode: 500,
+      error: "Something went wrong while genrating Access",
+    });
   }
 };
 
@@ -131,7 +133,11 @@ const getProfile = asyncHandler(async (req, res) => {
   const { token } = req.cookies;
   if (token) {
     jwt.verify(token, process.env.TOKEN_SECRET, {}, (err, user) => {
-      if (err) throw new ApiError(401, "Unauthorized request");
+      if (err)
+        return res.json({
+          statusCode: 401,
+          error: "Unauthorized request",
+        });
       res.json(user);
     });
   } else {
